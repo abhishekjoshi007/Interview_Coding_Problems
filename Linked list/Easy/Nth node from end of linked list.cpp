@@ -34,6 +34,9 @@ Expected Auxiliary Space: O(1).
 Constraints:
 1 <= L <= 103
 1 <= N <= 103
+
+Question link:https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
+
 */
 
 int getNthFromLast(Node *head, int n)

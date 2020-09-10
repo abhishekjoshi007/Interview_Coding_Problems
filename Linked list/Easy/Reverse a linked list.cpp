@@ -1,4 +1,4 @@
-Given a linked list of N nodes. The task is to reverse this list.
+/*Given a linked list of N nodes. The task is to reverse this list.
 
 Example 1:
 
@@ -21,4 +21,29 @@ Expected Time Complexity: O(N).
 Expected Auxiliary Space: O(1).
 
 Constraints:
-1 <= N <= 104
+1 <= N <= 104*/
+// Should reverse list and return new head.
+
+struct Node* reverseList(struct Node *head)
+{
+    if(head==NULL)
+    return NULL;
+    
+    struct Node* curr=head;
+    struct Node* next=NULL;
+    struct Node* prev=NULL;
+    
+    while(curr!=NULL)
+    {   
+        // Before changing next of current,store next node
+        next=curr->next;
+        // Now change next of current
+        // This is where actual reversing happens
+        curr->next=prev;
+        // Move prev and curr one step forward
+        prev=curr;
+        curr=next;
+    }
+    
+    return prev;
+}

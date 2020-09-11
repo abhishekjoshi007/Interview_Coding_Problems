@@ -36,18 +36,67 @@ Constraints:
 QUESTION LINK-https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
 */
 
-// One of them not NULL
+Node*reverse(Node*head)
+{
+    Node*curr=head;
+    Node*next=NULL;
+    Node*prev=NULL;
+    
+    while(curr!=NULL)
+    {
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        
+    }
+    
+    return prev;
+    
+    
+}
+void addFront(Node *&head, Node *&last, int data){
+   
+   Node *newNode=new Node(data);
+//   newNode->data=data;
+   newNode->next=NULL;
+   
+   if(last==NULL){
+       head=newNode;
+   }
+   else
+   {
+      newNode->next=head;
+      head=newNode;
+   }
+   last=newNode;
+   
+}
+
+struct Node* addTwoLists(struct Node* first, struct Node* second)
+{
+    //for first ll
+    Node*head1=reverse(first);
+    //for socund ll
+    Node*head2=reverse(second);
+    //for new ll
+    Node*res;
+    //for last node of new ll
+    Node*last=NULL;
+    
+    int total,carry=0;
+ // One of them not NULL
   while(head1|| head2){
       
-      int a=(head1)?(head1->data):(0); // If NULL contri is 0
-      int b=(head2)?(head2->data):(0);
+      int a=(head1!=NULL)?(head1->data):(0); // If NULL contri is 0
+      int b=(head2!=NULL)?(head2->data):(0);
       
-      total=(a+b+carry);
-      carry=(total/10);
+      total=a+b+carry;
+      carry=total/10;
       total=total%10;
       
-      // Add this to back of new list
-      addBack(res,last,total);
+      // Add this to front of new list
+      addFront(res,last,total);
       
       if(head1){
           head1=head1->next;
@@ -58,7 +107,8 @@ QUESTION LINK-https://practice.geeksforgeeks.org/problems/add-two-numbers-repres
       }
   }
   if(carry!=0){
-      addBack(res,last,carry);
+      addFront(res,last,carry);
   }
-  res = reverse(res);
+ 
   return res;
+}

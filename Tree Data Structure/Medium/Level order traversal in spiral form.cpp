@@ -60,3 +60,47 @@ i++;
 }
 return arr;
 }
+
+
+//Method 2
+
+vector<int> findSpiral(Node *root)
+{
+   vector<int> arr;
+
+//   queue can hold null values too abhishek q.push(root); here you are
+//   pushing the root right even though it is null with out checking so 
+//   queue.empty() will return false 
+
+   if (root==NULL)
+   return arr;
+   
+queue<Node*> q;
+q.push(root);
+int i=1;
+while(!q.empty())
+{
+int size = q.size();
+int flag = arr.size();
+
+while(size--)
+{
+     arr.push_back(q.front()->data);
+     
+     if(q.front()->left) 
+     q.push(q.front()->left);
+
+     if(q.front()->right) 
+     q.push(q.front()->right);
+   
+   q.pop();
+}
+   if(i%2!=0)
+{
+   reverse(arr.begin()+flag,arr.end());
+}
+i++;
+
+}
+return arr;
+}

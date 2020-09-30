@@ -3,9 +3,7 @@
 
 # Contents : 📝
 Tree 🌳
-
 Arrays 🎰
-
 Mathematical 📏
 
 Heap ⚠️

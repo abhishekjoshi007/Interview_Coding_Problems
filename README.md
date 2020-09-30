@@ -3,17 +3,29 @@
 
 # Contents : 📝
 Tree 🌳
+
 Arrays 🎰
+
 Mathematical 📏
 
 Heap ⚠️
+
 DP 📆
+
 Graph 🌏
+
 Trie 🌳
+
 Backtracking 🔚
+
 Stack 📚
+
 Bit_Magic 🔟
+
 Greedy :shipit:
+
 Recursion 🌀
+
 Sliding Window 🚌
+
 Design ✂️📐

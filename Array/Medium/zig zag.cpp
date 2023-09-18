@@ -136,4 +136,3 @@ int main()
  cout<<min(count_e,count_o);
   return 0;
 }
-```

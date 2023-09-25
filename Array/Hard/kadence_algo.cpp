@@ -33,7 +33,11 @@ Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 
 # **Intuition**
 
-The Intuition behind the code is to find the maximum sum of a contiguous subarray within the given array `nums`. It does this by scanning through the array and keeping track of the current sum of the subarray. Whenever the current sum becomes greater than the maximum sum encountered so far, it updates the maximum sum. If the current sum becomes negative, it resets the sum to 0 and starts a new subarray. By the end of the loop, the code returns the maximum sum found.
+The Intuition behind the code is to find the maximum sum of a contiguous subarray within the given array `nums`. 
+It does this by scanning through the array and keeping track of the current sum of the subarray. 
+Whenever the current sum becomes greater than the maximum sum encountered so far, it updates the maximum sum. 
+If the current sum becomes negative, it resets the sum to 0 and starts a new subarray. By the end of the loop, 
+the code returns the maximum sum found.
 
 # **Approach:**
 

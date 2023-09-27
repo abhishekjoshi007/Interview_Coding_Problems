@@ -28,19 +28,12 @@
     int size=50;
     //int arr[size];
     queue<int> arr;
-    //Randomly generating 50 elements in the array 
+    //Randomly generating 50 elements in the array  and pushing it in the queue
     for(int i=0;i<size;i++)
     {
         arr.push(rand()%100);
     }
-    while (!arr.empty()) {
-         cout<<arr.front();
-        arr.pop();
-    }
-    
-
-
-    //initilising Head as 50 
+   //initilising Head as 50 
     int head=50;
     
     //Calling function FCFS

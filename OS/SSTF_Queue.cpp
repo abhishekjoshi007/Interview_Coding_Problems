@@ -1,78 +1,32 @@
-/*Using a programming language of your choice, implement the SSTF algorithm. You will use a queue to store the 
-next location to move the disk head. Randomly generate these numbers. Place 50 of them in the queue and then 
-let the algorithm run. Finally, as the output let it print the total movement in the number of cylinders. 
-Properly comment/document your code.*/
-
 #include <bits/stdc++.h>
 using namespace std;
-
-int main() {
-    
-    //To cal. total movement in the number of cylinders.
-    int totalMovement = 0;
-    // Starting position (you can change this as needed)
-    int currentPosition = 30; 
-
-    //initialising a queue then filling it up with random 50 numbers 
-    queue<int> requestQueue;
-        for (int i=0;i<50;i++)
-            {
-                queue.push(rand()%100);
-            }
-        
-       
-
-    while (!requestQueue.empty()) {
-        
-        //miniSeekTime to cal the minimum distance among the giving cylinder 
-        int minSeekTime = INT_MAX;
-        //to tranck down the nearest cylinder 
-        int nearestRequest = -1;
-
-        // Find the nearest request in the queues
-        queue<int> tempQueue;
-        
-        while (!requestQueue.empty()) {
-            int request = requestQueue.front();
-            
-            int seekTime = abs(currentPosition - request);
-            if (seekTime < minSeekTime) {
-                minSeekTime = seekTime;
-                nearestRequest = request;
-            }
-            tempQueue.push(requestQueue.front());
-            requestQueue.pop();
-        }
-        
-        
-
-        // Calculate seek time to the nearest request
-        totalMovement += minSeekTime;
-
-        // Update the current position
-        currentPosition = nearestRequest;
-        int found=0;
-        // Restore the queue with remaining requests
-        while (!tempQueue.empty()) 
-        {
-        	
-            if(tempQueue.front()==currentPosition && found==0)
-            {
-            // If the current front of the queue is currentposition and
-           // we have not found it earlier, i.e. found==0 then, this is the first
-           // occurrence. So we pop it out and don't insert into the vector
-           tempQueue.pop();
-           found = 1; // Update the value of found to 1 as we have found the first occurrence
-           // of k in this cas
-            }
-            else {
-            requestQueue.push(tempQueue.front());
-            tempQueue.pop();
-            }
-            
-        }
-        cout << "Disk head moved to cylinder " << currentPosition << ", Total Movement: " << totalMovement << " cylinders" << endl;
+int main()
+{
+  int t;
+  cin>>t;
+  while(t--){
+    string str;
+    cin>>str;
+    int freq[26]={0}; //creating frequency array and initilize to 0
+       for(int i=0;i<str.length();i++)
+    {
+      freq[str[i]-'a']++;     //freq counting
     }
-    cout << "Total movement of the disk head: " << totalMovement << " cylinders" << endl;
-    return 0;
+    int flag=0;
+    for(int i=0;i<26;i++)
+    {
+      if(freq[i]>1)    //a[i] for character
+      {
+      flag=1;
+       cout<<char('freq'+i)<<"="<<freq[i]<<" ";  //see char initilize
+      freq[i]=0;
+      }
+  }
+     if(flag==0)
+     {
+       cout<<"-1";
+     }
+    cout<<endl;
+  }
+  return 0;
 }

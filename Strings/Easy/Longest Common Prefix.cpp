@@ -13,68 +13,21 @@ coz elements of vector are in lexicographic order and we are cheking only the fi
 
 class Solution {
 public:
-    string longestPalindrome(string s) {
-        
-        //we will have atleast one single char so max_length is 1
-        int max_length=1;
-        // it will keep track of substring start and end pos
-        int st=0,end=0;
-        int n=s.length();
+    string longestCommonPrefix(vector<string>& strs) {
+        string ans="";
+        sort(strs.begin(),strs.end());
 
-        //for odd position
-        for (int i=0;i<n-1;i++)
+        int n=strs.size();
+        string first=strs[0],sec=strs[n-1];
+        for (int i=0;i<min(first.size(),sec.size());i++)
         {
-            int l=i,r=i;
-            while (l>=0 && r<n)
+            if(first[i]!=sec[i])
             {
-                if(s[l] == s[r])
-                {
-                    l--;
-                    r++;
-                }
-                else
-                {
-                break;
-                }
+                return ans;
             }
-
-            int len=r-l-1;
-
-            if(len>max_length)
-            {
-                max_length=len;
-                st=l+1;
-                end=r-1;
-            }
-            cout<<max_length;
+            ans+=first[i];
         }
-
-       //for even position 
-        for (int i=0;i<n-1;i++)
-        {
-            int l=i,r=i+1;
-            while (l>=0 && r<n)
-            {
-                if(s[l] == s[r])
-                {
-                    l--;
-                    r++;
-                }
-                else
-                break;
-            }
-
-            int len=r-l-1;
-
-            if(len>max_length)
-            {
-                max_length=len;
-                st=l+1;
-                end=r-1;
-            }
-            cout<<max_length;
-        }
-
-    return s.substr(st,max_length);
+         return ans;
     }
+   
 };

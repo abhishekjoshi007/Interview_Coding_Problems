@@ -1,7 +1,11 @@
 /* Question- https://leetcode.com/problems/subsets/description/ */
 /*Algo 
 either we will include a no or not include a no. in this way greate a recursion tree 
-Base case we a taking one pointer i if i>array sixe return nut first print the output array element */
+Base case we a taking one pointer i if i>array sixe return nut first print the output array element 
+*/
+
+
+//For Solution explination https://www.youtube.com/watch?v=iqKwK_o93Gw
 
 class Solution {
  void solve(vector<int> nums, vector<int> output, int index,vector<vector<int>> &ans)

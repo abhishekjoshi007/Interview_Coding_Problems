@@ -47,3 +47,24 @@ struct Node* reverseList(struct Node *head)
     
     return prev;
 }
+
+
+//with class implementation
+
+//Iterative way 
+Node* reverse(node* &head)
+{
+node* prevptr=NULL;
+node* currptr=head;
+node* nextptr;
+
+while(currptr!=NULL)
+{
+nextptr=currptr->next;
+currptr->next=prevptr;
+
+preptr=currptr;
+currptr=nextptr;
+}
+return prevptr;
+}

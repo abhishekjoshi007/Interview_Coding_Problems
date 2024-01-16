@@ -117,18 +117,18 @@ node* reverse(node* &head)
 }
 
 //reverseing a ll recursive way
-node* reverseRecursive(node* &head)
+Node* reverse(node* &head)
 {
-  if(head==NULL || head->next==NULL)
-  {
-    return head;
-  }
-  node* newHead=reverseRecursive(head->next);
-  head->next->next=head;
-  head->next=NULL;
+if(head==NULL ||head->next==NULL)
+{
+return head;
+}
+node* newHead=reverseRecursive(head->next);
+node* front =head->next;
+front->next=head;
+head=NULL;
 
-  return newHead;
-  
+return newHead;
 }
 
 

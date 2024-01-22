@@ -60,7 +60,7 @@ void deleteAthead(node* &head)
 void deleteNode(node* &head,int pos)
 {
     if(pos==1)
-    {`
+    {
         deleteAthead(head);
         return;
     }
@@ -84,6 +84,51 @@ void deleteNode(node* &head,int pos)
     delete temp; 
 }
 
+//length of dll
+int length(node *head)
+{
+    int l=0;
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        l++;
+        temp=temp->next;
+    }
+return l;
+
+}
+
+//append means id pos =4 last 4 elemensts will moeve in front of the LL
+node* kappend(node* &head, int pos)
+{   
+    node* newHead;
+    node* newTail;
+    node* tail=head;
+
+    int l=length(head);
+    int count =1;
+    pos=pos%l;
+
+    while(tail->next!=NULL)
+    {
+        if(count==l-pos)
+        newTail=tail;
+
+        if(count==l-pos+1){
+            newHead=tail;
+        }
+
+        tail=tail->next;
+        count++;
+    }
+
+    newTail->next=NULL;
+    tail->next=head;
+
+    return newHead;
+    
+}
+
 void display(node* head)
 {
     node* temp=head;
@@ -99,12 +144,16 @@ void display(node* head)
   int main()
   { 
     node* head= NULL;
-    insertAtTail(head,3);
-    insertAtTail(head,5);
-    insertAtTail(head,8);
+    int arr[]={6,5,7,8,4,5};
+
+    for(int i=0;i<6;i++)
+    {
+        insertAtTail(head,arr[i]);
+        
+    }
     display(head);
-    insertAtHead(head,7);
-    display(head);
-    
+
+    node* newHead=kappend(head, 4);
+    display(newHead);
     return 0;
   }

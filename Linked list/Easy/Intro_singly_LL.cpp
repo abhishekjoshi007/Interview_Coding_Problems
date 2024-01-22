@@ -117,7 +117,7 @@ node* reverse(node* &head)
 }
 
 //reverseing a ll recursive way
-Node* reverse(node* &head)
+Node* reverseRecursive(node* &head)
 {
 if(head==NULL ||head->next==NULL)
 {
@@ -131,6 +131,47 @@ head=NULL;
 return newHead;
 }
 
+bool detectCycle(node* &head)
+{
+  node* slow=head;
+  node* fast=head;
+  
+  while(fast!=NULL && fast->next!=NULL)
+
+  {
+    slow=slow->next;
+    fast=fast->next->next;
+
+    if(slow==fast)
+    return true;
+
+  }
+  return false;
+}
+
+void removeCyle(node* &head)
+{
+ node* slow=head;
+  node* fast=head;
+  
+  do{
+     slow=slow->next;
+     fast=fast->next->next;
+  }
+  while(slow!=fast);
+  //make any one pointer to point to head
+  fast=head;
+
+  while(slow->next!=fast->next)
+  {
+    slow=slow->next;
+    fast=fast->next;
+
+  }
+  slow->next=NULL;
+
+
+}
 
 //here we are not modifying the LL that's why we passing by value 
   void display(node* head)

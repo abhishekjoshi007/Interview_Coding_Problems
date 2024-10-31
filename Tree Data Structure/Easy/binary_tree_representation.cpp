@@ -1,4 +1,5 @@
 #include<iostream>
+#include <queue>
 using namespace std;
 
 class node
@@ -38,9 +39,48 @@ node* buildTree(node* root )
     return root;
 
 } 
+
+void levelOrderTraversal(node* root)
+{
+    queue<node*> q;
+    q.push(root);
+    //sep[erator 
+    q.push(NULL);
+
+    while(!q.empty())
+    {
+        node* temp=q.front();
+        
+        q.pop();
+
+        if(temp==NULL)
+        {
+            //purana level is over
+            cout<<endl;
+            if(!q.empty())
+            {
+                q.push(NULL);
+            }
+        }
+        else{
+            cout<<temp->data<<" ";
+            if(temp->left)
+            {
+                q.push(temp->left);
+            }
+             if(temp->right)
+            {
+                q.push(temp->right);
+            }
+        }
+    }
+}
 int main( )
 {
     node* root= NULL;
     root =buildTree(root); 
+  // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
+    cout<<"Level order Traversal"<<endl;
+    levelOrderTraversal(root);
     return 0;
 }

@@ -172,3 +172,31 @@ int countLeaves(Node* root)
  
 }
 
+
+/******************************************************************************************************/
+/*https://www.naukri.com/code360/problems/count-leaf-nodes_893055?source=youtube&campaign=LoveBabbar_Codestudio&utm_source=youtube&utm_medium=affiliate&utm_campaign=LoveBabbar_Codestudio&leftPanelTabValue=SUBMISSION*/
+
+void inorderTraversal(BinaryTreeNode<int> *root, int &count )
+{
+    //base case
+    if(root==NULL)
+    {
+        return ;
+    }
+
+    //L
+    inorderTraversal(root->left, count);
+    //N
+    if (root->left == NULL && root->right == NULL) {
+    
+    count++;}
+    //R
+     inorderTraversal(root->right, count);
+}
+
+int noOfLeafNodes(BinaryTreeNode<int> *root){
+   int count=0;
+   inorderTraversal(root, count);
+    
+return count;
+}
